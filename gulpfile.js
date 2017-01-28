@@ -5,11 +5,12 @@ var concat = require('gulp-concat');
 var bower = require('gulp-bower');
 var pump = require('pump');
 var uglify = require('gulp-uglify');
+var cleanCSS = require('gulp-clean-css');
 
 
 gulp.task("default", ["build"]);
 
-gulp.task("build", ["build-lib"], function () {
+gulp.task("build", ["build-lib", "build-css"], function () {
     return tsProject.src()
         .pipe(tsProject())
         .js.pipe(gulp.dest("./src/"));
@@ -27,6 +28,20 @@ gulp.task("build-lib", ["bower"], function(cb) {
             ]),
             concat(('core.js')),
             uglify(),
+            gulp.dest('./src/lib')
+        ],
+        cb
+    );
+});
+
+gulp.task("build-css", ["bower"], function(cb) {
+    pump([
+            gulp.src([
+                "./bower_components/bootstrap/dist/css/bootstrap.min.css",
+                "./bower_components/bootstrap/dist/css/bootstrap-theme.min.css"
+            ]),
+            concat(('core.css')),
+            cleanCSS(),
             gulp.dest('./src/lib')
         ],
         cb

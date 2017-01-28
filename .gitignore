@@ -4,3 +4,6 @@ node_modules
 
 src/*.js
 src/**/*.js
+
+src/*.css
+src/**/*.css
