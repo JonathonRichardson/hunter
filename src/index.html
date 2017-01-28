@@ -3,6 +3,24 @@
   <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
+
+    <!-- Insert this line above script imports  -->
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+    <!-- normal script imports etc  -->
+    <link type="text/css" rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../bower_components/knockout/dist/knockout.js"></script>
+    <script src="../bower_components/knockout-mapping/knockout.mapping.js"></script>
+    <script src="../bower_components/knockout.punches/knockout.punches.js"></script>
+    <script>ko.punches.enableAll();</script>
+
+    <!-- Insert this line after script imports -->
+    <script>if (window.module) module = window.module;</script>
+
+    <script>var path = require('path');</script>
   </head>
   <body>
     <h1>Hello World!</h1>
@@ -10,10 +28,20 @@
     We are using Node.js <script>document.write(process.versions.node)</script>,
     Chromium <script>document.write(process.versions.chrome)</script>,
     and Electron <script>document.write(process.versions.electron)</script>.
+
+    <a class="btn btn-default" href="./pages/newTracker.html">New Tracker</a>
+
+    <!-- ko foreach: items -->
+    <pre>{{JSON.stringify($data, null, 3)}}</pre>
+    <!-- /ko -->
   </body>
 
   <script>
     // You can also require other files to run in this process
-    require('./renderer.js')
+    var VM = require('./index.js').VM;
+    ko.applyBindings(new VM());
+
+
+
   </script>
 </html>

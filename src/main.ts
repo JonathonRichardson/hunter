@@ -4,8 +4,14 @@ const app = electron.app;
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
 
+const Datastore = require("nedb");
 const path = require('path');
 const url = require('url');
+
+let dataDir = app.getPath("userData");
+let db = new Datastore(path.join(dataDir, "data.db"), {autoload: true});
+global['DB'] = db;
+
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -23,7 +29,7 @@ function createWindow () {
   }));
 
   // Open the DevTools.
-  //mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {

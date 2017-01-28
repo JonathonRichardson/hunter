@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>New Tracker!</title>
+
+    <!-- Insert this line above script imports  -->
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+    <!-- normal script imports etc  -->
+    <link type="text/css" rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <script src="../../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../bower_components/knockout/dist/knockout.js"></script>
+    <script src="../../bower_components/knockout-mapping/knockout.mapping.js"></script>
+    <script src="../../bower_components/knockout.punches/knockout.punches.js"></script>
+    <script>ko.punches.enableAll();</script>
+
+    <!-- Insert this line after script imports -->
+    <script>if (window.module) module = window.module;</script>
+</head>
+<body>
+    <h1>New Tracker!</h1>
+
+    <a class="btn btn-default" role="button" href="../index.html">Home</a>
+
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Form</div>
+
+            <div class="panel-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="title" class="control-label col-xs-6">Title</label>
+                        <div class="col-xs-6">
+                            <input type="text" id="title" class="form-control" data-bind="textInput: title">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description" class="control-label col-xs-6">Description</label>
+                        <div class="col-xs-6">
+                            <input type="text" id="description" class="form-control"  data-bind="textInput: description">
+                        </div>
+                    </div>
+
+                    <a class="btn btn-default" data-bind="click: save">Submit</a>
+                </form>
+
+                <pre>{{title}}</pre>
+                <pre>{{description}}</pre>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    // You can also require other files to run in this process
+    var VM = require('../renderer.js').VM;
+    ko.applyBindings(new VM());
+</script>
+</html>

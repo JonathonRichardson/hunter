@@ -1,0 +1,25 @@
+{
+  "name": "hunter",
+  "description": "A tracker",
+  "main": "src/main.js",
+  "authors": [
+    "Jonathon Richardson"
+  ],
+  "license": "Apache-2.0",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "knockout": "^3.4.1",
+    "knockout.punches": "^0.5.1",
+    "knockout-mapping": "^2.4.1",
+    "jquery": "^3.1.1"
+  }
+}
