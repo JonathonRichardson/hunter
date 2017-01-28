@@ -23,7 +23,7 @@ export class VM {
             else {
                 alert(`Success!`);
                 let win = window as any;
-                win.location = "../index.html";
+                win.location = "./home.html";
             }
         });
     }
