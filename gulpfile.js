@@ -20,6 +20,7 @@ gulp.task("build-lib", ["bower"], function(cb) {
     pump([
             gulp.src([
                 "./bower_components/jquery/dist/jquery.js",
+                "./bower_components/blockUI/jquery.blockUI.js",
                 "./bower_components/bootstrap/dist/js/bootstrap.min.js",
                 "./bower_components/knockout/dist/knockout.js",
                 "./bower_components/knockout-mapping/knockout.mapping.js",
